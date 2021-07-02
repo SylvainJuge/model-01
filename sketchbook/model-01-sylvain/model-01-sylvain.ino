@@ -62,10 +62,10 @@ KEYMAPS(
 
 // fn layer
   [FUNCTION] =  KEYMAP_STACKED(
-    ___,       Key_F1,           Key_F2,      Key_F3,        Key_F4,      Key_F5,   Key_CapsLock,
-    Key_Tab,   ___,              Key_Home,    Key_PageDown,  Key_PageUp,  Key_End,  ___,
-    Key_Home,  ___,              ___,         ___,           ___,         ___,      /*---*/
-    Key_End,   Key_PrintScreen,  Key_Insert,  ___,           ___,         ___,      ___,
+    ___,       Key_F1,           Key_F2,      Key_F3,     Key_F4,       Key_F5,   Key_CapsLock,
+    Key_Tab,   ___,              Key_Home,    Key_PageUp, Key_PageDown, Key_End,  ___,
+    Key_Home,  ___,              ___,         ___,        ___,          ___,      /*---*/
+    Key_End,   Key_PrintScreen,  Key_Insert,  ___,        ___,          ___,      ___,
     //
     ___,  Key_Delete,  ___,  ___,
     //
@@ -176,7 +176,7 @@ void setup() {
   )
 
   // small overlap to allow some flexibility
-  Qukeys.setOverlapThreshold(95);
+  Qukeys.setOverlapThreshold(80);
   // short delay for alternate keys, in an attempt to reduce the lag
   Qukeys.setHoldTimeout(200);
 

@@ -27,3 +27,4 @@ if [[ ! -d ${arduino_portable} ]]; then
     ln -s ${folder}/sketchbook ${arduino_portable}/sketchbook
 fi
 
+./arduino-ide/arduino &
