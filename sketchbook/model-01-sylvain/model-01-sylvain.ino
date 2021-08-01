@@ -116,17 +116,22 @@ enum {
 /** Wrappers, to be used by MagicCombo. **/
 
 /**
- * This simply toggles the keyboard protocol via USBQuirks, and wraps it within
- * a function with an unused argument, to match what MagicCombo expects.
- */
+   This simply toggles the keyboard protocol via USBQuirks, and wraps it within
+   a function with an unused argument, to match what MagicCombo expects.
+*/
 static void toggleKeyboardProtocol(uint8_t combo_index) {
   USBQuirks.toggleKeyboardProtocol();
 }
 
 /**
- *  This enters the hardware test mode
- */
+    This enters the hardware test mode
+*/
 static void enterHardwareTestMode(uint8_t combo_index) {
+  // Hardware test mode
+  // use Left Fn+Prog+Led to enter
+  // Hit left Fn many times to cycle through solid colors
+  // Then you get individual key test mode, then hit every key multiple times
+  // blue = pressed-down, red = key chatter detected, green = ok
   HardwareTestMode.runTests();
 }
 
