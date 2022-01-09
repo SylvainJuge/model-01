@@ -23,6 +23,7 @@
 #include "Kaleidoscope-MagicCombo.h"
 #include "Kaleidoscope-USB-Quirks.h"
 #include "Kaleidoscope-Qukeys.h"
+#include "Kaleidoscope-IdleLEDs.h"
 
 // macros
 enum {
@@ -154,6 +155,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // led effects
   LEDControl,
+  IdleLEDs,
   LEDOff,
   LEDRainbowEffect,
   LEDRainbowWaveEffect,
