@@ -53,7 +53,7 @@ KEYMAPS(
     //
     ShiftToLayer(FUNCTION),
     //============================================================================================
-    Key_LEDEffectNext,       Key_6,  Key_7,  Key_8,      Key_9,       Key_0,          ___,
+    ShiftToLayer(MAGIC),     Key_6,  Key_7,  Key_8,      Key_9,       Key_0,          Key_LEDEffectNext,
     Key_Enter,               Key_Y,  Key_U,  Key_I,      Key_O,       Key_P,          Key_Equals,
     /*---*/                  Key_H,  Key_J,  Key_K,      Key_L,       Key_Semicolon,  Key_Quote,
     Key_RightAlt,            Key_N,  Key_M,  Key_Comma,  Key_Period,  Key_Slash,      Key_Minus,
@@ -64,43 +64,43 @@ KEYMAPS(
 
 // fn layer
   [FUNCTION] =  KEYMAP_STACKED(
-    ___,       Key_F1,           Key_F2,      Key_F3,     Key_F4,       Key_F5,   Key_CapsLock,
+    ___,       Key_F1,           Key_F2,      Key_F3,     Key_F4,       Key_F5,   ___,
     Key_Tab,   ___,              Key_Home,    Key_PageUp, Key_PageDown, Key_End,  ___,
     Key_Home,  ___,              ___,         ___,        ___,          ___,      /*---*/
     Key_End,   Key_PrintScreen,  Key_Insert,  ___,        ___,          ___,      ___,
     //
-    ___,  Key_Delete,  ___,  ___,
+    ___,  Key_Delete,  ___,  ShiftToLayer(MAGIC),
     //
-   ___,
+    ___,
     //============================================================================================
     Consumer_ScanPreviousTrack,  Key_F6,                  Key_F7,                    Key_F8,                    Key_F9,           Key_F10,           Key_F11,
     Consumer_PlaySlashPause,     Consumer_ScanNextTrack,  Key_LeftCurlyBracket,      Key_RightCurlyBracket,     Key_LeftBracket,  Key_RightBracket,  Key_F12,
     /*---*/                      Key_LeftArrow,           Key_DownArrow,             Key_UpArrow,               Key_RightArrow,   ___,               ___,
     Key_PcApplication,           Consumer_Mute,           Consumer_VolumeDecrement,  Consumer_VolumeIncrement,  ___,              Key_Backslash,     Key_Pipe,
     //
-    ___,  Key_LeftGui,  Key_Enter,  ___,
+    ShiftToLayer(MAGIC),  Key_LeftGui,  Key_Enter,  ___,
     //
     ___),
 
 // magic layer
   [MAGIC] =  KEYMAP_STACKED(
-    ___,  ___,  ___,  ___,  ___,  ___,  ___,
-    ___,  ___,  ___,  ___,  ___,  ___,  ___,
-    ___,  ___,  ___,  ___,  ___,  ___,  /**/
-    ___,  ___,  ___,  ___,  ___,  ___,  ___,
+    XXX,  Key_F13,  Key_F14,  Key_F15,  Key_F16,  Key_F17,  XXX,
+    XXX,  XXX,  XXX,  XXX,  XXX,  XXX,  XXX,
+    XXX,  XXX,  XXX,  XXX,  XXX,  XXX,  /**/
+    XXX,  XXX,  XXX,  XXX,  XXX,  XXX,  XXX,
     //
-    ___,  ___,  ___,  ___,
+    XXX,  XXX,  XXX,  XXX,
     //
-    ___,
+    XXX,
     //============================================================================================
-    ___,  ___,  ___,  ___,  ___,  ___,  ___,
-    ___,  ___,  ___,  ___,  ___,  ___,  ___,
-    /**/  ___,  ___,  ___,  ___,  ___,  ___,
-    ___,  ___,  ___,  ___,  ___,  ___,  ___,
+    XXX,  Key_F18,  Key_F19,  Key_F20,  Key_F21,  Key_F22,  Key_F23,
+    XXX,  XXX,  XXX,  XXX,  XXX,  XXX,  Key_F24,
+    /**/  XXX,  XXX,  XXX,  XXX,  XXX,  XXX,
+    XXX,  XXX,  XXX,  XXX,  XXX,  XXX,  XXX,
     //
-    ___,  ___,  ___,  ___,
+    XXX,  XXX,  XXX,  XXX,
     //
-    ___)
+    XXX)
 
 
 ) // KEYMAPS
@@ -196,22 +196,32 @@ KALEIDOSCOPE_INIT_PLUGINS(
 );
 
 void setup() {
+
   QUKEYS(
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 1), Key_RightAlt),       // A/alt-gr
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 2), Key_LeftAlt),        // S/alt
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 3), Key_LeftControl),    // D/ctrl
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 4), Key_LeftShift),      // F/shift
+
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_RightShift),    // J/shift
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 12), Key_RightControl),  // K/ctrl
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 13), Key_LeftAlt),       // L/alt
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 14), Key_RightAlt),      // ;/alt-gr
+
+    // kaleidoscope::plugin::Qukey(0, KeyAddr(2, 6), ShiftToLayer(MAGIC)),  // Esc/shift to magic layer
+    // kaleidoscope::plugin::Qukey(0, KeyAddr(2, 9), ShiftToLayer(MAGIC)),  // butterfly/shift to magic layer
+
   )
 
+  /*
   // small overlap to allow some flexibility
-  Qukeys.setOverlapThreshold(80);
+  Qukeys.setOverlapThreshold(90);
   // short delay for alternate keys, in an attempt to reduce the lag
   Qukeys.setHoldTimeout(200);
 
   // experiment other timing parameters (not supported yet)
   // Qukeys.setMinimumHoldTime(100); // default 50 delay to activate alt key, will require slow down for modifiers
+  */
 
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
@@ -227,11 +237,11 @@ void setup() {
   // start with LEDs off
   LEDOff.activate();
 
-  EEPROMKeymap.setup(2);
+  EEPROMKeymap.setup(3);
 
-  ColormapEffect.max_layers(5);
+  ColormapEffect.max_layers(3);
 
-  ActiveModColorEffect.highlight_color = CRGB(0x00, 0xff, 0xff);
+  ActiveModColorEffect.setHighlightColor(CRGB(0x84, 0x00, 0xff));
 
   Qukeys.activate();
 }
