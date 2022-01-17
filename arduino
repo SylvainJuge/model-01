@@ -1,7 +1,7 @@
 #!/bin/bash
 
 folder="$(readlink -f "$(dirname $0)")"
-arduino_version=1.8.15
+arduino_version=1.8.19
 arduino_archive=arduino-${arduino_version}-linux64.tar.xz
 arduino_url=https://downloads.arduino.cc/${arduino_archive}
 arduino_folder=${folder}/arduino-${arduino_version}
@@ -9,7 +9,7 @@ arduino_link=${folder}/arduino-ide
 arduino_portable=${arduino_link}/portable
 
 # download & unpack arduino if required
-if [[ ! -e ${arduino_link} ]]; then
+if [[ ! -e ${arduino_folder} ]]; then
     echo "download ${arduino_url}"
     rm -rf ${arduino_archive} 2>/dev/null
     wget -q ${arduino_url}
