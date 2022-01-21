@@ -213,15 +213,10 @@ void setup() {
 
   )
 
-  /*
-  // small overlap to allow some flexibility
-  Qukeys.setOverlapThreshold(90);
-  // short delay for alternate keys, in an attempt to reduce the lag
-  Qukeys.setHoldTimeout(200);
 
-  // experiment other timing parameters (not supported yet)
-  // Qukeys.setMinimumHoldTime(100); // default 50 delay to activate alt key, will require slow down for modifiers
-  */
+  // require "long" hold to get alternate qukey
+  // helps prevent unintentional alternate values (in this case it's modifier keys).
+  Qukeys.setMinimumHoldTime(400);
 
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
