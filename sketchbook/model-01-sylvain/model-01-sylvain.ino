@@ -64,41 +64,41 @@ KEYMAPS(
 
 // fn layer
   [FUNCTION] =  KEYMAP_STACKED(
-    ___,       Key_F1,           Key_F2,      Key_F3,     Key_F4,       Key_F5,   ___,
-    Key_Tab,   ___,              Key_Home,    Key_PageUp, Key_PageDown, Key_End,  ___,
-    Key_Home,  ___,              ___,         ___,        ___,          ___,      /*---*/
-    Key_End,   Key_PrintScreen,  Key_Insert,  ___,        ___,          ___,      ___,
+    ___,       Key_F1,           Key_F2,         Key_F3,                      Key_F4,                    Key_F5,                   ___,
+    Key_Tab,   ___,              Key_Home,       Key_PageUp,                  Key_PageDown,              Key_End,                  ___,
+    Key_Home,  ___,              Consumer_Mute,  Consumer_VolumeDecrement,    Consumer_VolumeIncrement,  ___,                      /*---*/
+    Key_End,   Key_PrintScreen,  Key_Insert,     Consumer_ScanPreviousTrack,  Consumer_ScanNextTrack,    Consumer_PlaySlashPause,  ___,
     //
-    ___,  Key_Delete,  ___,  ShiftToLayer(MAGIC),
+    ___,       Key_Delete,       ___,            ShiftToLayer(MAGIC),
     //
     ___,
     //============================================================================================
-    Consumer_ScanPreviousTrack,  Key_F6,                  Key_F7,                    Key_F8,                    Key_F9,           Key_F10,           Key_F11,
-    Consumer_PlaySlashPause,     Consumer_ScanNextTrack,  Key_LeftCurlyBracket,      Key_RightCurlyBracket,     Key_LeftBracket,  Key_RightBracket,  Key_F12,
-    /*---*/                      Key_LeftArrow,           Key_DownArrow,             Key_UpArrow,               Key_RightArrow,   ___,               ___,
-    Key_PcApplication,           Consumer_Mute,           Consumer_VolumeDecrement,  Consumer_VolumeIncrement,  ___,              Key_Backslash,     Key_Pipe,
+    ___,                  Key_F6,         Key_F7,                Key_F8,                 Key_F9,           Key_F10,           Key_F11,
+    ___,                  ___,            Key_LeftCurlyBracket,  Key_RightCurlyBracket,  Key_LeftBracket,  Key_RightBracket,  Key_F12,
+    /*---*/               Key_LeftArrow,  Key_DownArrow,         Key_UpArrow,            Key_RightArrow,   ___,               ___,
+    Key_PcApplication,    Key_Home,       Key_PageDown,          Key_PageUp,             Key_End,          Key_Backslash,     Key_Pipe,
     //
-    ShiftToLayer(MAGIC),  Key_LeftGui,  Key_Enter,  ___,
+    ShiftToLayer(MAGIC),  Key_LeftGui,    Key_Enter,             ___,
     //
     ___),
 
 // magic layer
   [MAGIC] =  KEYMAP_STACKED(
     XXX,  Key_F13,  Key_F14,  Key_F15,  Key_F16,  Key_F17,  XXX,
-    XXX,  XXX,  XXX,  XXX,  XXX,  XXX,  XXX,
-    XXX,  XXX,  XXX,  XXX,  XXX,  XXX,  /**/
-    XXX,  XXX,  XXX,  XXX,  XXX,  XXX,  XXX,
+    XXX,  XXX,      XXX,      XXX,      XXX,      XXX,      XXX,
+    XXX,  XXX,      XXX,      XXX,      XXX,      XXX,      /**/
+    XXX,  XXX,      XXX,      XXX,      XXX,      XXX,      XXX,
     //
-    XXX,  XXX,  XXX,  XXX,
+    XXX,  XXX,      XXX,      XXX,
     //
     XXX,
     //============================================================================================
     XXX,  Key_F18,  Key_F19,  Key_F20,  Key_F21,  Key_F22,  Key_F23,
-    XXX,  XXX,  XXX,  XXX,  XXX,  XXX,  Key_F24,
-    /**/  XXX,  XXX,  XXX,  XXX,  XXX,  XXX,
-    XXX,  XXX,  XXX,  XXX,  XXX,  XXX,  XXX,
+    XXX,  XXX,      XXX,      XXX,      XXX,      XXX,      Key_F24,
+    /**/  XXX,      XXX,      XXX,      XXX,      XXX,      XXX,
+    XXX,  XXX,      XXX,      XXX,      XXX,      XXX,      XXX,
     //
-    XXX,  XXX,  XXX,  XXX,
+    XXX,  XXX,      XXX,      XXX,
     //
     XXX)
 
