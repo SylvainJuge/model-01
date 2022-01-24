@@ -216,7 +216,7 @@ void setup() {
 
   // require "long" hold to get alternate qukey
   // helps prevent unintentional alternate values (in this case it's modifier keys).
-  Qukeys.setMinimumHoldTime(400);
+  Qukeys.setMinimumHoldTime(500);
 
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
