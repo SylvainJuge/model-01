@@ -64,12 +64,12 @@ KEYMAPS(
 
 // fn layer
   [FUNCTION] =  KEYMAP_STACKED(
-    ___,       Key_F1,           Key_F2,         Key_F3,                      Key_F4,                    Key_F5,                   ___,
-    Key_Tab,   ___,              Key_Home,       Key_PageUp,                  Key_PageDown,              Key_End,                  ___,
-    Key_Home,  ___,              Consumer_Mute,  Consumer_VolumeDecrement,    Consumer_VolumeIncrement,  ___,                      /*---*/
-    Key_End,   Key_PrintScreen,  Key_Insert,     Consumer_ScanPreviousTrack,  Consumer_ScanNextTrack,    Consumer_PlaySlashPause,  ___,
+    ___,       Key_F1,           Key_F2,      Key_F3,                      Key_F4,                    Key_F5,                   ___,
+    Key_Tab,   ___,              ___,         Consumer_VolumeDecrement,    Consumer_VolumeIncrement,  Consumer_Mute,            ___,
+    Key_Home,  ___,              ___,         ___,                         ___,                       ___,                      /*---*/
+    Key_End,   Key_PrintScreen,  Key_Insert,  Consumer_ScanPreviousTrack,  Consumer_ScanNextTrack,    Consumer_PlaySlashPause,  ___,
     //
-    ___,       Key_Delete,       ___,            ShiftToLayer(MAGIC),
+    ___,       Key_Delete,       ___,         ShiftToLayer(MAGIC),
     //
     ___,
     //============================================================================================
