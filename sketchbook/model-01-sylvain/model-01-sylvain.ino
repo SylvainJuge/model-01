@@ -65,9 +65,9 @@ KEYMAPS(
 // fn layer
   [FUNCTION] =  KEYMAP_STACKED(
     ___,       Key_F1,           Key_F2,      Key_F3,                      Key_F4,                    Key_F5,                   ___,
-    Key_Tab,   ___,              ___,         Consumer_VolumeDecrement,    Consumer_VolumeIncrement,  Consumer_Mute,            ___,
+    Key_Tab,   ___,              ___,         Consumer_ScanPreviousTrack,  Consumer_ScanNextTrack,    Consumer_PlaySlashPause,  ___,
     Key_Home,  ___,              ___,         ___,                         ___,                       ___,                      /*---*/
-    Key_End,   Key_PrintScreen,  Key_Insert,  Consumer_ScanPreviousTrack,  Consumer_ScanNextTrack,    Consumer_PlaySlashPause,  ___,
+    Key_End,   Key_PrintScreen,  Key_Insert,  Consumer_VolumeDecrement,    Consumer_VolumeIncrement,  Consumer_Mute,            ___,
     //
     ___,       Key_Delete,       ___,         ShiftToLayer(MAGIC),
     //
@@ -136,8 +136,6 @@ enum {
   // Enter test mode
   COMBO_ENTER_TEST_MODE
 };
-
-/** Wrappers, to be used by MagicCombo. **/
 
 /**
    This simply toggles the keyboard protocol via USBQuirks, and wraps it within
