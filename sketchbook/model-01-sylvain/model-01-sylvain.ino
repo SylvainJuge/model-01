@@ -196,15 +196,16 @@ KALEIDOSCOPE_INIT_PLUGINS(
 void setup() {
 
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 1), Key_RightAlt),       // A/alt-gr
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 2), Key_LeftAlt),        // S/alt
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 3), Key_LeftControl),    // D/ctrl
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 4), Key_LeftShift),      // F/shift
 
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 2), Key_RightAlt),       // W/alt-gr
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 13), Key_RightAlt),      // O/alt-gr
+
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_RightShift),    // J/shift
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 12), Key_RightControl),  // K/ctrl
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 13), Key_LeftAlt),       // L/alt
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 14), Key_RightAlt),      // ;/alt-gr
 
     // kaleidoscope::plugin::Qukey(0, KeyAddr(2, 6), ShiftToLayer(MAGIC)),  // Esc/shift to magic layer
     // kaleidoscope::plugin::Qukey(0, KeyAddr(2, 9), ShiftToLayer(MAGIC)),  // butterfly/shift to magic layer
@@ -214,7 +215,13 @@ void setup() {
 
   // require "long" hold to get alternate qukey
   // helps prevent unintentional alternate values (in this case it's modifier keys).
-  Qukeys.setMinimumHoldTime(500);
+  Qukeys.setMinimumHoldTime(300);
+
+  // try to keep it quite strict
+  Qukeys.setOverlapThreshold(100);
+
+  // disable tap repeat
+  // Qukeys.setMaxIntervalForTapRepeat(0); // only available in 1.99.4+
 
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
@@ -234,7 +241,8 @@ void setup() {
 
   ColormapEffect.max_layers(3);
 
-  ActiveModColorEffect.setHighlightColor(CRGB(0x84, 0x00, 0xff));
+  // ActiveModColorEffect.setHighlightColor(CRGB(0x84, 0x00, 0xff)); // only available for 1.99.4+
+  ActiveModColorEffect.highlight_color = CRGB(0x84, 0x00, 0xff);
 
   Qukeys.activate();
 }
