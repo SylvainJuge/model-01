@@ -44,19 +44,19 @@ KEYMAPS(
 
 // primary layer
   [PRIMARY] = KEYMAP_STACKED(
-    ___,           Key_1,  Key_2,  Key_3,  Key_4,  Key_5,  Key_LEDEffectNext,
-    Key_Backtick,  Key_Q,  Key_W,  Key_E,  Key_R,  Key_T,  Key_Tab,
-    Key_PageUp,    Key_A,  Key_S,  Key_D,  Key_F,  Key_G,  /*---*/
-    Key_PageDown,  Key_Z,  Key_X,  Key_C,  Key_V,  Key_B,  Key_Escape,
+    ___,           Key_1,  Key_2,           Key_3,     Key_4,     Key_5,  Key_LEDEffectNext,
+    Key_Backtick,  Key_Q,  MT(RightAlt,W),  Key_E,     Key_R,     Key_T,  Key_Tab,
+    Key_PageUp,    Key_A,  ALT_T(S),        CTL_T(D),  SFT_T(F),  Key_G,  /*---*/
+    Key_PageDown,  Key_Z,  Key_X,           Key_C,     Key_V,     Key_B,  Key_Escape,
     //
     Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
     //
     ShiftToLayer(FUNCTION),
     //============================================================================================
-    ShiftToLayer(MAGIC),     Key_6,  Key_7,  Key_8,      Key_9,       Key_0,          Key_LEDEffectNext,
-    Key_Enter,               Key_Y,  Key_U,  Key_I,      Key_O,       Key_P,          Key_Equals,
-    /*---*/                  Key_H,  Key_J,  Key_K,      Key_L,       Key_Semicolon,  Key_Quote,
-    Key_Tab,                 Key_N,  Key_M,  Key_Comma,  Key_Period,  Key_Slash,      Key_Minus,
+    ShiftToLayer(MAGIC),  Key_6,  Key_7,     Key_8,      Key_9,           Key_0,          Key_LEDEffectNext,
+    Key_Enter,            Key_Y,  Key_U,     Key_I,      MT(RightAlt,O),  Key_P,          Key_Equals,
+    /*---*/               Key_H,  SFT_T(J),  CTL_T(K),   ALT_T(L),        Key_Semicolon,  Key_Quote,
+    Key_Tab,              Key_N,  Key_M,     Key_Comma,  Key_Period,      Key_Slash,      Key_Minus,
     //
     Key_RightShift,  Key_LeftAlt,  Key_Spacebar,  Key_RightControl,
     //
@@ -194,7 +194,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 );
 
 void setup() {
-
+/*
   QUKEYS(
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 2), Key_LeftAlt),        // S/alt
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 3), Key_LeftControl),    // D/ctrl
@@ -211,11 +211,11 @@ void setup() {
     // kaleidoscope::plugin::Qukey(0, KeyAddr(2, 9), ShiftToLayer(MAGIC)),  // butterfly/shift to magic layer
 
   )
-
+*/
 
   // require "long" hold to get alternate qukey
   // helps prevent unintentional alternate values (in this case it's modifier keys).
-  Qukeys.setMinimumHoldTime(300);
+  Qukeys.setMinimumHoldTime(250);
 
   // try to keep it quite strict
   Qukeys.setOverlapThreshold(100);
@@ -241,8 +241,8 @@ void setup() {
 
   ColormapEffect.max_layers(3);
 
-  // ActiveModColorEffect.setHighlightColor(CRGB(0x84, 0x00, 0xff)); // only available for 1.99.4+
-  ActiveModColorEffect.highlight_color = CRGB(0x84, 0x00, 0xff);
+  ActiveModColorEffect.setHighlightColor(CRGB(0x84, 0x00, 0xff)); // only available for 1.99.4+
+  // ActiveModColorEffect.highlight_color = CRGB(0x84, 0x00, 0xff);
 
   Qukeys.activate();
 }
