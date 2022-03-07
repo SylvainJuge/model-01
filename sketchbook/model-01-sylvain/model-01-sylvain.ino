@@ -51,7 +51,7 @@ KEYMAPS(
     //
     Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
     //
-    ShiftToLayer(FUNCTION),
+    LT(FUNCTION, Spacebar),
     //============================================================================================
     ShiftToLayer(MAGIC),  Key_6,  Key_7,     Key_8,      Key_9,           Key_0,          Key_LEDEffectNext,
     Key_Enter,            Key_Y,  Key_U,     Key_I,      MT(RightAlt,O),  Key_P,          Key_Equals,
@@ -60,7 +60,7 @@ KEYMAPS(
     //
     Key_RightShift,  Key_LeftAlt,  Key_Spacebar,  Key_RightControl,
     //
-    ShiftToLayer(FUNCTION)),
+    LT(FUNCTION, Spacebar)),
 
 // fn layer
   [FUNCTION] =  KEYMAP_STACKED(
