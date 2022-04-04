@@ -27,7 +27,8 @@
 
 // macros
 enum {
-  MACRO_TOGGLE_QUKEYS
+  MACRO_TOGGLE_QUKEYS,
+  MACRO_RESET
 };
 
 
@@ -53,7 +54,7 @@ KEYMAPS(
     //
     LT(FUNCTION, Spacebar),
     //============================================================================================
-    ShiftToLayer(MAGIC),  Key_6,  Key_7,     Key_8,      Key_9,           Key_0,          Key_LEDEffectNext,
+    ShiftToLayer(MAGIC),  Key_6,  Key_7,     Key_8,      Key_9,           Key_0,          M(MACRO_RESET),
     Key_Enter,            Key_Y,  Key_U,     Key_I,      MT(RightAlt,O),  Key_P,          Key_Equals,
     /*---*/               Key_H,  SFT_T(J),  CTL_T(K),   ALT_T(L),        Key_Semicolon,  Key_Quote,
     Key_Tab,              Key_N,  Key_M,     Key_Comma,  Key_Period,      Key_Slash,      Key_Minus,
@@ -165,13 +166,13 @@ USE_MAGIC_COMBOS({
 });
 
 KALEIDOSCOPE_INIT_PLUGINS(
+  BootGreetingEffect,
   Qukeys,
   EEPROMSettings,
   EEPROMKeymap,
   Focus,
   FocusSettingsCommand,
   FocusEEPROMCommand,
-  BootGreetingEffect,
   HardwareTestMode,
 
   // led effects
@@ -194,31 +195,16 @@ KALEIDOSCOPE_INIT_PLUGINS(
 );
 
 void setup() {
-/*
-  QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 2), Key_LeftAlt),        // S/alt
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 3), Key_LeftControl),    // D/ctrl
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 4), Key_LeftShift),      // F/shift
 
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 2), Key_RightAlt),       // W/alt-gr
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 13), Key_RightAlt),      // O/alt-gr
-
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_RightShift),    // J/shift
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 12), Key_RightControl),  // K/ctrl
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 13), Key_LeftAlt),       // L/alt
-
-    // kaleidoscope::plugin::Qukey(0, KeyAddr(2, 6), ShiftToLayer(MAGIC)),  // Esc/shift to magic layer
-    // kaleidoscope::plugin::Qukey(0, KeyAddr(2, 9), ShiftToLayer(MAGIC)),  // butterfly/shift to magic layer
-
-  )
-*/
+  // longer boot effect for easier visibility
+  BootGreetingEffect.timeout = 15000;
 
   // require "long" hold to get alternate qukey
   // helps prevent unintentional alternate values (in this case it's modifier keys).
-  Qukeys.setMinimumHoldTime(250);
+  Qukeys.setMinimumHoldTime(75);
 
   // try to keep it quite strict
-  Qukeys.setOverlapThreshold(100);
+  Qukeys.setOverlapThreshold(97);
 
   // disable tap repeat
   // Qukeys.setMaxIntervalForTapRepeat(0); // only available in 1.99.4+
