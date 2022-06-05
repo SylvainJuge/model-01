@@ -79,49 +79,37 @@ KEYMAPS(
     /*---*/               Key_LeftArrow,  Key_DownArrow,         Key_UpArrow,            Key_RightArrow,   ___,               ___,
     Key_PcApplication,    Key_Home,       Key_PageDown,          Key_PageUp,             Key_End,          Key_Backslash,     Key_Pipe,
     //
-    ShiftToLayer(MAGIC),  Key_LeftGui,    Key_Enter,             ___,
+    ___,  Key_LeftGui,  Key_Enter,  ___,
     //
     ___),
-
-// magic layer
-  [MAGIC] =  KEYMAP_STACKED(
-    XXX,  Key_F13,  Key_F14,  Key_F15,  Key_F16,  Key_F17,  XXX,
-    XXX,  XXX,      XXX,      XXX,      XXX,      XXX,      XXX,
-    XXX,  XXX,      XXX,      XXX,      XXX,      XXX,      /**/
-    XXX,  XXX,      XXX,      XXX,      XXX,      XXX,      XXX,
-    //
-    XXX,  XXX,      XXX,      XXX,
-    //
-    XXX,
-    //============================================================================================
-    XXX,  Key_F18,  Key_F19,  Key_F20,  Key_F21,  Key_F22,  Key_F23,
-    XXX,  XXX,      XXX,      XXX,      XXX,      XXX,      Key_F24,
-    /**/  XXX,      XXX,      XXX,      XXX,      XXX,      XXX,
-    XXX,  XXX,      XXX,      XXX,      XXX,      XXX,      XXX,
-    //
-    XXX,  XXX,      XXX,      XXX,
-    //
-    XXX)
-
 
 ) // KEYMAPS
 // *INDENT-ON*
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
+    switch (macroIndex) {
+    case MACRO_RESET:
+      if (keyToggledOff(keyState)){
+        USBCON&= ~(1<<USBE);
+        delay(5);
+        asm volatile(" jmp 0");
+      }
+      break;
+    }
   return MACRO_NONE;
 }
 
 // host power management
 void toggleLedsOnSuspendResume(kaleidoscope::plugin::HostPowerManagement::Event event) {
   switch (event) {
-  case kaleidoscope::plugin::HostPowerManagement::Suspend:
-    LEDControl.disable();
-    break;
-  case kaleidoscope::plugin::HostPowerManagement::Resume:
-    LEDControl.enable();
-    break;
-  case kaleidoscope::plugin::HostPowerManagement::Sleep:
-    break;
+    case kaleidoscope::plugin::HostPowerManagement::Suspend:
+      LEDControl.disable();
+      break;
+    case kaleidoscope::plugin::HostPowerManagement::Resume:
+      LEDControl.enable();
+      break;
+    case kaleidoscope::plugin::HostPowerManagement::Sleep:
+      break;
   }
 }
 
