@@ -45,7 +45,7 @@ KEYMAPS(
 
 // primary layer
   [PRIMARY] = KEYMAP_STACKED(
-    ___,           Key_1,  Key_2,           Key_3,     Key_4,     Key_5,  Key_LEDEffectNext,
+    ___,           Key_1,  Key_2,           Key_3,     Key_4,     Key_5,  Key_Hyper,
     Key_Backtick,  Key_Q,  MT(RightAlt,W),  Key_E,     Key_R,     Key_T,  Key_Tab,
     Key_PageUp,    Key_A,  ALT_T(S),        CTL_T(D),  SFT_T(F),  Key_G,  /*---*/
     Key_PageDown,  Key_Z,  Key_X,           Key_C,     Key_V,     Key_B,  Key_Escape,
@@ -54,10 +54,10 @@ KEYMAPS(
     //
     LT(FUNCTION, Spacebar),
     //============================================================================================
-    ShiftToLayer(MAGIC),  Key_6,  Key_7,     Key_8,      Key_9,           Key_0,          M(MACRO_RESET),
-    Key_Enter,            Key_Y,  Key_U,     Key_I,      MT(RightAlt,O),  Key_P,          Key_Equals,
-    /*---*/               Key_H,  SFT_T(J),  CTL_T(K),   ALT_T(L),        Key_Semicolon,  Key_Quote,
-    Key_Tab,              Key_N,  Key_M,     Key_Comma,  Key_Period,      Key_Slash,      Key_Minus,
+    Key_Hyper,  Key_6,  Key_7,     Key_8,      Key_9,           Key_0,          M(MACRO_RESET),
+    Key_Enter,  Key_Y,  Key_U,     Key_I,      MT(RightAlt,O),  Key_P,          Key_Equals,
+    /*---*/     Key_H,  SFT_T(J),  CTL_T(K),   ALT_T(L),        Key_Semicolon,  Key_Quote,
+    Key_Tab,    Key_N,  Key_M,     Key_Comma,  Key_Period,      Key_Slash,      Key_Minus,
     //
     Key_RightShift,  Key_LeftAlt,  Key_Spacebar,  Key_RightControl,
     //
@@ -65,12 +65,12 @@ KEYMAPS(
 
 // fn layer
   [FUNCTION] =  KEYMAP_STACKED(
-    ___,       Key_F1,           Key_F2,      Key_F3,                      Key_F4,                    Key_F5,                   ___,
+    ___,       Key_F1,           Key_F2,      Key_F3,                      Key_F4,                    Key_F5,                   Key_LEDEffectNext,
     Key_Tab,   ___,              ___,         Consumer_ScanPreviousTrack,  Consumer_ScanNextTrack,    Consumer_PlaySlashPause,  ___,
     Key_Home,  ___,              ___,         ___,                         ___,                       ___,                      /*---*/
     Key_End,   Key_PrintScreen,  Key_Insert,  Consumer_VolumeDecrement,    Consumer_VolumeIncrement,  Consumer_Mute,            ___,
     //
-    ___,       Key_Delete,       ___,         ShiftToLayer(MAGIC),
+    ___,  Key_Delete,  ___,  ___,
     //
     ___,
     //============================================================================================
@@ -197,14 +197,14 @@ KALEIDOSCOPE_INIT_PLUGINS(
 void setup() {
 
   // longer boot effect for easier visibility
-  BootGreetingEffect.timeout = 15000;
+  BootGreetingEffect.timeout = 10000;
 
   // require "long" hold to get alternate qukey
   // helps prevent unintentional alternate values (in this case it's modifier keys).
-  Qukeys.setMinimumHoldTime(75);
+  Qukeys.setMinimumHoldTime(80);
 
   // try to keep it quite strict
-  Qukeys.setOverlapThreshold(97);
+  Qukeys.setOverlapThreshold(100);
 
   // disable tap repeat
   // Qukeys.setMaxIntervalForTapRepeat(0); // only available in 1.99.4+
