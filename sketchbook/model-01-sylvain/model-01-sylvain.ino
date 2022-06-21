@@ -185,7 +185,9 @@ KALEIDOSCOPE_INIT_PLUGINS(
 void setup() {
 
   // longer boot effect for easier visibility
-  BootGreetingEffect.timeout = 10000;
+  BootGreetingEffect.timeout = 15000;
+  BootGreetingEffect.hue=64;
+  BootGreetingEffect.search_key = Key_Esc;
 
   // require "long" hold to get alternate qukey
   // helps prevent unintentional alternate values (in this case it's modifier keys).
