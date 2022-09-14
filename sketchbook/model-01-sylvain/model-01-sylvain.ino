@@ -154,14 +154,19 @@ USE_MAGIC_COMBOS({
 });
 
 KALEIDOSCOPE_INIT_PLUGINS(
-  BootGreetingEffect,
+  HardwareTestMode,
+  Macros,
+  HostPowerManagement,
+  MagicCombo,
+  USBQuirks,
   Qukeys,
+  
+  BootGreetingEffect,
   EEPROMSettings,
   EEPROMKeymap,
   Focus,
   FocusSettingsCommand,
   FocusEEPROMCommand,
-  HardwareTestMode,
 
   // led effects
   LEDControl,
@@ -172,14 +177,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
   LEDBreatheEffect,
   LEDPaletteTheme,
   ColormapEffect,
-  ActiveModColorEffect,
+  ActiveModColorEffect
 
-  // The macros plugin adds support for macros
-  Macros,
-
-  HostPowerManagement,
-  MagicCombo,
-  USBQuirks
 );
 
 void setup() {
@@ -191,7 +190,7 @@ void setup() {
 
   // require "long" hold to get alternate qukey
   // helps prevent unintentional alternate values (in this case it's modifier keys).
-  Qukeys.setMinimumHoldTime(80);
+  Qukeys.setMinimumHoldTime(70);
 
   // try to keep it quite strict
   Qukeys.setOverlapThreshold(100);
@@ -213,9 +212,9 @@ void setup() {
   // start with LEDs off
   LEDOff.activate();
 
-  EEPROMKeymap.setup(3);
+  EEPROMKeymap.setup(2);
 
-  ColormapEffect.max_layers(3);
+  ColormapEffect.max_layers(2);
 
   ActiveModColorEffect.setHighlightColor(CRGB(0x84, 0x00, 0xff)); // only available for 1.99.4+
   // ActiveModColorEffect.highlight_color = CRGB(0x84, 0x00, 0xff);
